@@ -10,25 +10,22 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*abduo*h+tk@*!k9m2-4qipb!_7phmp+^)2)dz3pznqqxux3$i'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "DEFAULT_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG") != "False"  # TODO: SWAP
 
-ALLOWED_HOSTS = [
-
-]
-
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split()
 
 # Application definition
 
@@ -41,8 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     "annoying",
+    "django_tables2",
+    "crispy_forms",
+    "extra_views",
+    "django_gravatar",
 
-    "community"
+    "community",
+    "help"
 ]
 
 MIDDLEWARE = [
@@ -76,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ineedhelp.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -86,7 +87,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -106,13 +106,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "America/Toronto"
 
 USE_I18N = True
 
@@ -120,8 +119,35 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+# Auth
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
+# Crispy forms
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# Emails
+
+EMAIL_BACKEND = "django_ses.SESBackend"
+
+AWS_ACCESS_KEY_ID = os.environ.get("DJANGO_AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("DJANGO_AWS_SECRET_ACCESS_KEY")
+
+DEFAULT_FROM_EMAIL = "no-reply@ineedhelp.aussieseaweed.com"
+
+# Tables2
+
+DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"

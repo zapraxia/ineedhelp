@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% load crispy_forms_filters %}
+
+{% block title %}Register{% endblock %}
+
+{% block heading %}Create a New Account{% endblock %}
+
+{% block description %}Want to help out? You can do so by registering yourself as a designated helper!{% endblock %}
+
+{% block content %}
+
+    <div class="box">
+        <form class="p-5 w-50 m-auto" method="post">
+            {% csrf_token %}
+
+            {{ form|crispy }}
+
+            <input type="submit" class="btn btn-primary" value="Register"/>
+        </form>
+    </div>
+
+{% endblock %}

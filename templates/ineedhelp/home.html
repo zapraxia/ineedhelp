@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block heading %}Welcome to INeedHelp!{% endblock %}
+
+{% block description %}
+
+    put a description here
+
+{% endblock %}
+
+{% block widgets %}
+
+    <a class="btn btn-primary btn" href="{% url "query" %}" role="button">Get Help</a>
+    <a class="btn btn-primary btn" href="{% url "correspondence-create" %}" role="button">Contact Us</a>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="box p-3">
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box p-3">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

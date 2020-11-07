@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% load django_tables2 %}
+
+{% block title %}All Programs{% endblock %}
+
+{% block heading %}Browse Programs{% endblock %}
+
+{% block content %}
+
+    <div class="box">
+        {% render_table table %}
+    </div>
+
+{% endblock %}
