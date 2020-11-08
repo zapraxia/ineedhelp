@@ -28,18 +28,15 @@
 
             <div class="collapse navbar-collapse" id="navbar-items">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url "query" %}">Get Help</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbar-dropdown" role="button" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             Community
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
-                            <a class="dropdown-item" href="{% url "user-list" %}">Users</a>
                             <a class="dropdown-item" href="{% url "university-list" %}">Universities</a>
                             <a class="dropdown-item" href="{% url "program-list" %}">Programs</a>
+                            <a class="dropdown-item" href="{% url "user-list" %}">Users</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -77,8 +74,8 @@
         <div class="flex-fill">
             <header class="jumbotron shadow">
                 <div class="container">
-                    <h2>{% block heading %}{% endblock %}</h2>
-                    <p>{% block description %}{% endblock %}</p>
+                    <h1>{% block heading %}{% endblock %}</h1>
+                    <p class="lead">{% block description %}{% endblock %}</p>
                     {% block widgets %}{% endblock %}
                 </div>
             </header>

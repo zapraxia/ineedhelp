@@ -20,14 +20,6 @@ class CountedMixin(Table):
         return next(self.counter)
 
 
-class UserTable(CountedMixin, Table):
-    username = LinkColumn("user-detail", args=[A("pk")])
-
-    class Meta:
-        model = get_user_model()
-        fields = ["row_number", "username", "first_name", "last_name"]
-
-
 class UniversityTable(CountedMixin, Table):
     name = LinkColumn("university-detail", args=[A("pk")])
 
@@ -43,3 +35,11 @@ class ProgramTable(CountedMixin, Table):
     class Meta:
         model = Program
         fields = ["row_number", "name", "university"]
+
+
+class UserTable(CountedMixin, Table):
+    username = LinkColumn("user-detail", args=[A("pk")])
+
+    class Meta:
+        model = get_user_model()
+        fields = ["row_number", "username", "first_name", "last_name"]

@@ -1,19 +1,25 @@
 from django.urls import path
 
-from .views import UserListView, UserCreateView, UserUpdateView, UserDetailView, UniversityListView, \
-    UniversityDetailView, ProgramListView, ProgramDetailView, CorrespondenceCreateView, CorrespondenceCreateDoneView
+from . import views
 
 urlpatterns = [
-    path("users/", UserListView.as_view(), name="user-list"),
-    path("users/create/", UserCreateView.as_view(), name="user-create"),
-    path("users/<int:pk>/", UserDetailView.as_view(), name="user-detail"),
-    path("users/update/", UserUpdateView.as_view(), name="user-update"),
+    path("universities/", views.UniversityListView.as_view(), name="university-list"),
+    path("universities/<int:pk>/", views.UniversityDetailView.as_view(), name="university-detail"),
+    path("universities/create/", views.UniversityCreateView.as_view(), name="university-create"),
+    path("universities/create/done/", views.UniversityCreateDoneView.as_view(), name="university-create-done"),
 
-    path("universities/", UniversityListView.as_view(), name="university-list"),
-    path("universities/<int:pk>/", UniversityDetailView.as_view(), name="university-detail"),
-    path("programs/", ProgramListView.as_view(), name="program-list"),
-    path("programs/<int:pk>/", ProgramDetailView.as_view(), name="program-detail"),
+    path("programs/", views.ProgramListView.as_view(), name="program-list"),
+    path("programs/<int:pk>/", views.ProgramDetailView.as_view(), name="program-detail"),
+    path("programs/create/", views.ProgramCreateView.as_view(), name="program-create"),
+    path("programs/create/done/", views.ProgramCreateDoneView.as_view(), name="program-create-done"),
 
-    path("correspondences/create", CorrespondenceCreateView.as_view(), name="correspondence-create"),
-    path("correspondences/create/done", CorrespondenceCreateDoneView.as_view(), name="correspondence-create-done")
+    path("users/", views.UserListView.as_view(), name="user-list"),
+    path("users/<int:pk>/", views.UserDetailView.as_view(), name="user-detail"),
+    path("users/update/", views.UserUpdateView.as_view(), name="user-update"),
+    path("users/create/", views.UserCreateView.as_view(), name="user-create"),
+    path("users/create/done/", views.UserCreateDoneView.as_view(), name="user-create-done"),
+
+    path("correspondences/create/", views.CorrespondenceCreateView.as_view(), name="correspondence-create"),
+    path("correspondences/create/done/", views.CorrespondenceCreateDoneView.as_view(),
+         name="correspondence-create-done")
 ]

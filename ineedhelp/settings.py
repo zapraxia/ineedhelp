@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "DEFAULT_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DJANGO_DEBUG") != "False"  # TODO: SWAP
+DEBUG = os.environ.get("DJANGO_DEBUG") == "True"
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split()
 
@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     "model_utils",
 
     "community",
-    "help"
 ]
 
 MIDDLEWARE = [
@@ -148,7 +147,7 @@ EMAIL_BACKEND = "django_ses.SESBackend"
 AWS_ACCESS_KEY_ID = os.environ.get("DJANGO_AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("DJANGO_AWS_SECRET_ACCESS_KEY")
 
-DEFAULT_FROM_EMAIL = "no-reply@ineedhelp.aussieseaweed.com"
+DEFAULT_FROM_EMAIL = "no-reply@ineedhelp.zapraxia.com"
 
 # Tables2
 

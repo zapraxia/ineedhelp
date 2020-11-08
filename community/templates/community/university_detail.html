@@ -8,6 +8,8 @@
 
 {% block description %}{{ object.description }}{% endblock %}
 
+{% block widgets %}Don't see your program? <a href="{% url "program-create" %}">Create a Program</a>!{% endblock %}
+
 {% block content %}
 
     <div class="box">

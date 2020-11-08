@@ -16,6 +16,14 @@
 
             {{ form|crispy }}
 
+            <p>
+                Please describe yourself so people in need can contact you (fields are not required)!
+            </p>
+
+            {% for formset in inlines %}
+                {{ formset|crispy }}
+            {% endfor %}
+
             <input type="submit" class="btn btn-primary" value="Register"/>
         </form>
     </div>

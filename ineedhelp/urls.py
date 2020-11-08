@@ -24,5 +24,4 @@ urlpatterns = [
     path("", generic.TemplateView.as_view(template_name="ineedhelp/home.html"), name="home"),
 
     path("community/", include("community.urls")),
-    path("help/", include("help.urls"))
 ]

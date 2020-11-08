@@ -6,6 +6,12 @@
 
 {% block heading %}Browse Programs{% endblock %}
 
+{% block widgets %}
+
+    <a class="btn btn-primary btn" href="{% url "program-create" %}" role="button">Create Program</a>
+
+{% endblock %}
+
 {% block content %}
 
     <div class="box">

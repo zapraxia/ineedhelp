@@ -2,9 +2,21 @@
 
 {% load django_tables2 %}
 
-{% block title %}All Organizations{% endblock %}
+{% block title %}All Universities{% endblock %}
 
-{% block heading %}Browse Organizations{% endblock %}
+{% block heading %}Browse Universities{% endblock %}
+
+{% block description %}
+
+    You can select people from your own university programs. Start by selecting your university.
+
+{% endblock %}
+
+{% block widgets %}
+
+    <a class="btn btn-primary btn" href="{% url "university-create" %}" role="button">Create University</a>
+
+{% endblock %}
 
 {% block content %}
 

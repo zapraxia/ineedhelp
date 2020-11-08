@@ -5,9 +5,24 @@
 
 {% block title %}{{ object.username }}{% endblock %}
 
-{% block heading %}User {{ object.username }}{% endblock %}
+{% block heading %}{{ object.first_name }} {{ object.last_name }} ({{ object.username }}){% endblock %}
 
-{% block description %}{{ object.profile.description }}{% endblock %}
+{% block description %}
+    {{ object.profile.description }}
+
+    <p>
+        {% if object.profile.year %}Year: {{ object.profile.year }}<br/>{% endif %}
+        {% if object.profile.phone_number %}Phone: {{ object.profile.phone_number }}<br/>{% endif %}
+        {% if object.profile.discord_username %}Discord: {{ object.profile.discord_username }}<br/>{% endif %}
+        {% if object.profile.facebook_link %}
+            Facebook: <a href="{{ object.profile.facebook_link }}">{{ object.profile.facebook_link }}</a><br/>
+        {% endif %}
+        {% if object.profile.skype_link %}
+            Skype: <a href="{{ object.profile.skype_link }}">{{ object.profile.skype_link }}</a>
+        {% endif %}
+    </p>
+
+{% endblock %}
 
 {% block widgets %}
 
@@ -26,16 +41,9 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="col-md-3">
-            <img class="w-100 box" src="{{ object.profile.gravatar_url }}" alt="avatar"/>
-        </div>
-        <div class="col-md-9">
-            <div class="box">
-                <div class="h4 p-3 m-0 bg-light border rounded-top">Programs</div>
-                {% render_table table %}
-            </div>
-        </div>
+    <div class="box">
+        <div class="h4 p-3 m-0 bg-light border rounded-top">Programs</div>
+        {% render_table table %}
     </div>
 
 {% endblock %}

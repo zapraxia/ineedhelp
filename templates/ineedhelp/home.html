@@ -2,50 +2,34 @@
 
 {% block title %}Home{% endblock %}
 
-{% block heading %}Welcome to INeedHelp!{% endblock %}
+{% block heading %}Welcome to <i>INeedHelp</i>!{% endblock %}
 
 {% block description %}
 
-    <p> Hello there! MENTAL HEALTH is important for EVERYONE, and there is absolutely no shame talking about it.
+    <p>
+        Hello there! MENTAL HEALTH is important for EVERYONE, and there is absolutely no shame talking about it.
         This is the place for university students to reach out to each other and chat about whatever is on your mind.
         You can register as a help seeker, a general helper, or a professional helper.
-    <p>
-
-    <p> As a help seeker, you need to provide absolutely NO personal information. You can indicate your university or program
-        if you want to chat with someone with similar experience. You can choose to chat with a general helper, who is likely to
-        be a fellow student who is willing to chat with you or a prefessional helper.
-    <p>
-
-    <p> As a general helper, you can register with your name, university, and program information.
+    </p>
 
     <p>
+        As a help seeker, you can choose to show whatever personal information you want. You can indicate your
+        university or program if you want to chat with someone with similar experience. You can choose to chat with a
+        general helper, who is likely to be a fellow student who is willing to chat with you or a professional helper.
+    </p>
 
-    <p> You can also register as a professional helper. You can indicate your expertise here.
-
+    <p class="font-weight-bold">
+        If you are in an urgent need, please seek
+        <a href="https://www.canada.ca/en/public-health/services/mental-health-services/mental-health-get-help.html">
+            professional help
+        </a>.
     <p>
 
 {% endblock %}
 
 {% block widgets %}
 
-    <a class="btn btn-primary btn" href="{% url "query" %}" role="button">Get Help</a>
+    <a class="btn btn-primary btn" href="{% url "university-list" %}" role="button">Get Help</a>
     <a class="btn btn-primary btn" href="{% url "correspondence-create" %}" role="button">Contact Us</a>
-
-{% endblock %}
-
-{% block content %}
-
-    <div class="row">
-        <div class="col-md-8">
-            <div class="box p-3">
-
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="box p-3">
-
-            </div>
-        </div>
-    </div>
 
 {% endblock %}

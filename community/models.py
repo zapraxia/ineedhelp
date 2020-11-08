@@ -1,30 +1,8 @@
 from annoying import fields
 from django.contrib.auth import get_user_model
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
 from model_utils import Choices
-
-
-class University(models.Model):
-    name = models.CharField(max_length=254)
-    description = models.CharField(max_length=254, blank=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name_plural = "universities"
-
-
-class Program(models.Model):
-    university = models.ForeignKey(University, related_name="programs", on_delete=models.CASCADE)
-    members = models.ManyToManyField(get_user_model(), related_name="programs")
-
-    name = models.CharField(max_length=254)
-    description = models.CharField(max_length=254, blank=True)
-
-    def __str__(self):
-        return self.name
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Profile(models.Model):
@@ -41,6 +19,28 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class University(models.Model):
+    name = models.CharField(max_length=254)
+    description = models.CharField(max_length=254, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "universities"
+
+
+class Program(models.Model):
+    university = models.ForeignKey(University, related_name="programs", on_delete=models.CASCADE)
+    members = models.ManyToManyField(get_user_model(), related_name="programs", blank=True)
+
+    name = models.CharField(max_length=254)
+    description = models.CharField(max_length=254, blank=True)
+
+    def __str__(self):
+        return f"{self.university} {self.name}"
 
 
 class Correspondence(models.Model):
