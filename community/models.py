@@ -15,7 +15,7 @@ class Profile(models.Model):
     phone_number = PhoneNumberField(null=True, blank=True)
     discord_username = models.CharField(max_length=254, null=True, blank=True)
     facebook_link = models.CharField(max_length=254, null=True, blank=True)
-    skype_link = models.CharField(max_length=254, null=True, blank=True)
+    skype_username = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return self.user.username
