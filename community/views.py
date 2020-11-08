@@ -20,7 +20,7 @@ class UserListView(SingleTableView):
 
 class ProfileInline(InlineFormSet):
     model = Profile
-    fields = ["description"]
+    fields = ["description", "year", "phone_number", "discord_username", "facebook_link", "skype_link"]
     factory_kwargs = {"can_delete": False}
 
     def get_object(self):
@@ -85,7 +85,7 @@ class ProgramDetailView(SingleTableMixin, DetailView):
         return UserTable(self.object.members.all())
 
     def post(self, request, *args, **kwargs):
-        program = self.object
+        program = self.get_object()
 
         if request.user.is_authenticated:
             if request.user in program.members.all():

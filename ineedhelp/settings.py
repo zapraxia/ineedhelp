@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "extra_views",
     "django_gravatar",
+    "phonenumber_field",
+    "model_utils",
 
     "community",
     "help"

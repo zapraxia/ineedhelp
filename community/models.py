@@ -1,11 +1,13 @@
 from annoying import fields
 from django.contrib.auth import get_user_model
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
+from model_utils import Choices
 
 
 class University(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.CharField(max_length=255, blank=True)
+    name = models.CharField(max_length=254)
+    description = models.CharField(max_length=254, blank=True)
 
     def __str__(self):
         return self.name
@@ -18,26 +20,33 @@ class Program(models.Model):
     university = models.ForeignKey(University, related_name="programs", on_delete=models.CASCADE)
     members = models.ManyToManyField(get_user_model(), related_name="programs")
 
-    name = models.CharField(max_length=255)
-    description = models.CharField(max_length=255, blank=True)
+    name = models.CharField(max_length=254)
+    description = models.CharField(max_length=254, blank=True)
 
     def __str__(self):
         return self.name
 
 
 class Profile(models.Model):
+    YEAR = Choices(1, 2, 3, 4, 5)
+
     user = fields.AutoOneToOneField(get_user_model(), on_delete=models.CASCADE)
 
-    description = models.CharField(max_length=255, blank=True)
+    description = models.CharField(max_length=254, blank=True)
+    year = models.PositiveSmallIntegerField(choices=YEAR, null=True, blank=True)
+    phone_number = PhoneNumberField(null=True, blank=True)
+    discord_username = models.CharField(max_length=254, null=True, blank=True)
+    facebook_link = models.CharField(max_length=254, null=True, blank=True)
+    skype_link = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return self.user.username
 
 
 class Correspondence(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=254)
     email = models.EmailField()
-    subject = models.CharField(max_length=255)
+    subject = models.CharField(max_length=254)
     content = models.TextField()
 
     created_on = models.DateTimeField(auto_now_add=True)

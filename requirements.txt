@@ -4,6 +4,8 @@ django-annoying==0.10.6
 django-crispy-forms==1.9.2
 django-extra-views==0.13.0
 django-gravatar2==1.4.4
+django-model-utils==4.0.0
+django-phonenumber-field==5.0.0
 django-tables2==2.3.3
 pytz==2020.4
 six==1.15.0
