@@ -17,9 +17,7 @@
         {% if object.profile.facebook_link %}
             Facebook: <a href="{{ object.profile.facebook_link }}">{{ object.profile.facebook_link }}</a><br/>
         {% endif %}
-        {% if object.profile.skype_link %}
-            Skype: <a href="{{ object.profile.skype_link }}">{{ object.profile.skype_link }}</a>
-        {% endif %}
+        {% if object.profile.skype_username %}Skype: {{ object.profile.skype_username }}{% endif %}
     </p>
 
 {% endblock %}

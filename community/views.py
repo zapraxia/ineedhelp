@@ -81,7 +81,7 @@ class UserListView(SingleTableView):
 
 class ProfileInline(InlineFormSet):
     model = Profile
-    fields = ["description", "year", "phone_number", "discord_username", "facebook_link", "skype_link"]
+    fields = ["description", "year", "phone_number", "discord_username", "facebook_link", "skype_username"]
     factory_kwargs = {"can_delete": False}
 
     def get_object(self):
