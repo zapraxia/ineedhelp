@@ -8,4 +8,4 @@ django-model-utils
 django-phonenumber-field
 django-ses
 django-tables2
-python-dateutil
+phonenumbers
