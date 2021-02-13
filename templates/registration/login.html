@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% load crispy_forms_filters %}
 
@@ -16,8 +16,8 @@
 
             <input type="submit" class="btn btn-primary" value="Log in"/>
 
-            <a class="btn btn-secondary btn" href="{% url "password_reset" %}" role="button">Reset Password</a>
-            <a class="btn btn-secondary btn" href="{% url "user-create" %}" role="button">Register</a>
+            <a class="btn btn-secondary btn" href="{% url 'password_reset' %}" role="button">Reset Password</a>
+            <a class="btn btn-secondary btn" href="{% url 'user-create' %}" role="button">Register</a>
         </form>
     </div>
 

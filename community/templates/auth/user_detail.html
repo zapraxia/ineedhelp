@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% load gravatar %}
 {% load django_tables2 %}
@@ -26,10 +26,10 @@
 
     {% if object == user %}
         <div class="lead btn-toolbar">
-            <a href="{% url "user-update" %}">
+            <a href="{% url 'user-update' %}">
                 <button type="button" class="btn btn-primary mx-1">Edit User</button>
             </a>
-            <a href="{% url "password_change" %}">
+            <a href="{% url 'password_change' %}">
                 <button type="button" class="btn btn-primary mx-1">Change Password</button>
             </a>
         </div>

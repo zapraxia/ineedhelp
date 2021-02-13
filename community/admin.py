@@ -9,7 +9,7 @@ admin.site.register(Profile)
 
 @admin.register(Correspondence)
 class CorrespondenceAdmin(admin.ModelAdmin):
-    list_display = ["subject", "name", "email", "created_on"]
+    list_display = ['subject', 'name', 'email', 'created_on']
 
     def has_add_permission(self, request):
         return False

@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% block title %}Home{% endblock %}
 
@@ -29,7 +29,7 @@
 
 {% block widgets %}
 
-    <a class="btn btn-primary btn" href="{% url "university-list" %}" role="button">Get Help</a>
-    <a class="btn btn-primary btn" href="{% url "correspondence-create" %}" role="button">Contact Us</a>
+    <a class="btn btn-primary btn" href="{% url 'university-list' %}" role="button">Get Help</a>
+    <a class="btn btn-primary btn" href="{% url 'correspondence-create' %}" role="button">Contact Us</a>
 
 {% endblock %}

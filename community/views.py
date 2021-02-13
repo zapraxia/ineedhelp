@@ -27,14 +27,14 @@ class UniversityDetailView(SingleTableMixin, DetailView):
 
 class UniversityCreateView(CreateView):
     model = University
-    fields = ["name", "description"]
+    fields = ['name', 'description']
 
     def get_success_url(self):
-        return reverse("university-create-done")
+        return reverse('university-create-done')
 
 
 class UniversityCreateDoneView(TemplateView):
-    template_name = "community/university_create_done.html"
+    template_name = 'community/university_create_done.html'
 
 
 class ProgramListView(SingleTableView):
@@ -57,21 +57,21 @@ class ProgramDetailView(SingleTableMixin, DetailView):
             else:
                 program.members.add(request.user)
 
-            return HttpResponseRedirect(reverse("program-detail", kwargs={"pk": self.get_object().pk}))
+            return HttpResponseRedirect(reverse('program-detail', kwargs={'pk': self.get_object().pk}))
         else:
             return HttpResponseForbidden()
 
 
 class ProgramCreateView(CreateView):
     model = Program
-    fields = ["university", "name", "description"]
+    fields = ['university', 'name', 'description']
 
     def get_success_url(self):
-        return reverse("program-create-done")
+        return reverse('program-create-done')
 
 
 class ProgramCreateDoneView(TemplateView):
-    template_name = "community/program_create_done.html"
+    template_name = 'community/program_create_done.html'
 
 
 class UserListView(SingleTableView):
@@ -81,8 +81,8 @@ class UserListView(SingleTableView):
 
 class ProfileInline(InlineFormSet):
     model = Profile
-    fields = ["description", "year", "phone_number", "discord_username", "facebook_link", "skype_username"]
-    factory_kwargs = {"can_delete": False}
+    fields = ['description', 'year', 'phone_number', 'discord_username', 'facebook_link', 'skype_username']
+    factory_kwargs = {'can_delete': False}
 
     def get_object(self):
         return self.request.user.profile
@@ -96,20 +96,20 @@ class UserCreateView(CreateWithInlinesView):
     def get_success_url(self):
         login(self.request, self.object)
 
-        return reverse("user-create-done")
+        return reverse('user-create-done')
 
 
 class UserUpdateView(LoginRequiredMixin, UpdateWithInlinesView):
     model = get_user_model()
-    fields = ["username", "email"]
+    fields = ['username', 'email']
     inlines = [ProfileInline]
-    template_name = "auth/user_update.html"
+    template_name = 'auth/user_update.html'
 
     def test_func(self):
         return self.request.user.is_authenticated
 
     def get_success_url(self):
-        return reverse("user-detail", kwargs={"pk": self.object.id})
+        return reverse('user-detail', kwargs={'pk': self.object.id})
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -117,23 +117,23 @@ class UserUpdateView(LoginRequiredMixin, UpdateWithInlinesView):
 
 class UserDetailView(SingleTableMixin, DetailView):
     model = get_user_model()
-    context_object_name = "_user"
+    context_object_name = '_user'
 
     def get_table(self, **kwargs):
         return ProgramTable(self.object.programs.all())
 
 
 class UserCreateDoneView(TemplateView):
-    template_name = "auth/user_create_done.html"
+    template_name = 'auth/user_create_done.html'
 
 
 class CorrespondenceCreateView(CreateView):
     model = Correspondence
-    fields = ["name", "email", "subject", "content"]
+    fields = ['name', 'email', 'subject', 'content']
 
     def get_success_url(self):
-        return reverse("correspondence-create-done")
+        return reverse('correspondence-create-done')
 
 
 class CorrespondenceCreateDoneView(TemplateView):
-    template_name = "community/correspondence_create_done.html"
+    template_name = 'community/correspondence_create_done.html'

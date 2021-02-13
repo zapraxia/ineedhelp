@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% block title %}Program Creation Successful{% endblock %}
 
@@ -6,6 +6,6 @@
 
 {% block description %}
 
-    The program has been successfully created. Go back to <a href="{% url "program-list" %}">list of all programs</a>.
+    The program has been successfully created. Go back to <a href="{% url 'program-list' %}">list of all programs</a>.
 
 {% endblock %}

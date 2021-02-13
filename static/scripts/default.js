@@ -1,5 +1,5 @@
 function getWebsocketProtocol() {
-    return location.protocol === "https:" ? "wss:" : "ws:";
+    return location.protocol === 'https:' ? 'wss:' : 'ws:';
 }
 
 $(function () {

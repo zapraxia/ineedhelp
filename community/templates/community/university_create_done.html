@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% block title %}University Creation Successful{% endblock %}
 
@@ -7,6 +7,6 @@
 {% block description %}
 
     The university has been successfully created. Go back to
-    <a href="{% url "university-list" %}">list of all universities</a>.
+    <a href="{% url 'university-list' %}">list of all universities</a>.
 
 {% endblock %}

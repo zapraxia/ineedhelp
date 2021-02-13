@@ -29,18 +29,18 @@ class University(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = "universities"
+        verbose_name_plural = 'universities'
 
 
 class Program(models.Model):
-    university = models.ForeignKey(University, related_name="programs", on_delete=models.CASCADE)
-    members = models.ManyToManyField(get_user_model(), related_name="programs", blank=True)
+    university = models.ForeignKey(University, related_name='programs', on_delete=models.CASCADE)
+    members = models.ManyToManyField(get_user_model(), related_name='programs', blank=True)
 
     name = models.CharField(max_length=254)
     description = models.CharField(max_length=254, blank=True)
 
     def __str__(self):
-        return f"{self.university} {self.name}"
+        return f'{self.university} {self.name}'
 
 
 class Correspondence(models.Model):

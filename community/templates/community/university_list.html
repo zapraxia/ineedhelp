@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% load django_tables2 %}
 
@@ -14,7 +14,7 @@
 
 {% block widgets %}
 
-    <a class="btn btn-primary btn" href="{% url "university-create" %}" role="button">Create University</a>
+    <a class="btn btn-primary btn" href="{% url 'university-create' %}" role="button">Create University</a>
 
 {% endblock %}
 
